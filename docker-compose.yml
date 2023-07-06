@@ -163,7 +163,7 @@ services:
       volumes:
         - ./dev/home:/home/developer
         - ../../Data:/landing
-        - ../../repo:/home/repo
+        - ../../repos:/home/repos
       networks:
         sparknet:
           ipv4_address: 172.28.1.7
