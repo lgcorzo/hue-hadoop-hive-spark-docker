@@ -162,7 +162,8 @@ services:
         SPARK_LOCAL_HOSTNAME: dev
       volumes:
         - ./dev/home:/home/developer
-        - ../Data:/landing
+        - ../../Data:/landing
+        - ../../repo:/home/repo
       networks:
         sparknet:
           ipv4_address: 172.28.1.7
