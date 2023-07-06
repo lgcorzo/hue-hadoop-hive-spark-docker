@@ -1,0 +1,15 @@
+{
+    "python.envFile": "${workspaceFolder}\\.databricks\\.databricks.env",
+    "databricks.python.envFile": "${workspaceFolder}/.env",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "metastore",
+            "database": "metastore",
+            "username": "jupyter"
+        }
+    ]
+}

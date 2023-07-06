@@ -1,0 +1,32 @@
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8.*
+  - pyspark=3.3.*
+  - delta-spark=2.3.*
+  - pandas=1.5.3
+  - findspark
+  - pip=20.2.4
+  - openjdk=8
+  - nb_conda_kernels
+  - pip:
+    - azureml-core==1.45.0.post2
+    - azureml-sdk==1.45.0
+    - azure-identity
+    - azure-keyvault-secrets
+    - azure-core==1.25.1
+    - flake8
+    - flake8-formatter-junit-xml==0.0.*
+    - cloudpickle==1.2.2
+    - numpy==1.21.4
+    - pytest
+    - pytest-cov
+    - python-dotenv
+    - scikit-learn==0.24.0
+    - tqdm==4.62.*
+    - fastparquet
+    - autopep8
+    - ipykernel
+    - pyarrow
+
+name: pyspark_code_env
