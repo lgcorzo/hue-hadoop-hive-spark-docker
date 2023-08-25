@@ -2,9 +2,9 @@
 
 ## Software
 
-* [Hadoop 3.3.4](https://hadoop.apache.org/)
+* [Hadoop 3.3.6](https://hadoop.apache.org/)
 * [Hive 3.1.3](http://hive.apache.org/)
-* [Spark 3.3.2](https://spark.apache.org/)
+* [Spark 3.4.1](https://spark.apache.org/)
 
 ## Quick Start
 
@@ -115,3 +115,7 @@ https://marcel-jan.eu/datablog/2020/10/25/i-built-a-working-hadoop-spark-hive-cl
 hive and delta tables integration
 
 [connectors/hive at master · delta-io/connectors · GitHub](https://github.com/delta-io/connectors/tree/master/hive)
+
+
+
+

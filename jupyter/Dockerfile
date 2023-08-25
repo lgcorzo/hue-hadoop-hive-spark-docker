@@ -52,8 +52,8 @@ RUN sudo pip install -U pip &&\
     sudo pip install --no-cache-dir \
     openpyxl \
     findspark \
-    pyspark==3.3.* \
-    delta-spark==2.3.* \
+    pyspark==3.4.1 \
+    delta-spark==2.4.* \
     pandas \
     pyarrow \
     tensorflow-serving-api

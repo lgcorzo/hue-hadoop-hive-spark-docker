@@ -37,7 +37,7 @@ services:
       - "10000:10000"
     volumes:
       - namenode:/opt/hadoop/dfs/name
-      - ../Data:/landing
+      - ../../Data:/landing
     restart: always
     networks:
       sparknet:
@@ -63,7 +63,7 @@ services:
       - "9864:9864"
     volumes:
       - datanode1:/opt/hadoop/dfs/data
-      - ../Data:/landing
+      - ../../Data:/landing
     restart: always
     networks:
       sparknet:
@@ -89,7 +89,7 @@ services:
       - "9865:9864"
     volumes:
       - datanode2:/opt/hadoop/dfs/data
-      - ../Data:/landing
+      - ../../Data:/landing
     restart: always
     networks:
       sparknet:
@@ -139,7 +139,7 @@ services:
       - "8888:8888"
     volumes:
       - ./jupyter/notebook:/home/jupyter
-      - ../Data:/landing
+      - ../../Data:/landing
     restart: always
     networks:
       sparknet:
@@ -199,7 +199,7 @@ services:
     - "history:172.28.1.5"
 
   hue:
-    image: gethue/hue:4.6.0
+    image: gethue/hue:latest
     container_name: hue
     environment:
         SPARK_MASTER_HOST: 172.28.1.2
