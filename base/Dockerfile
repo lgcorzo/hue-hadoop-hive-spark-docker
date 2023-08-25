@@ -29,7 +29,7 @@ USER $USERNAME
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
 # Hadoop
-ARG HADOOP_VERSION=3.3.6
+ARG HADOOP_VERSION=3.3.4
 ARG HADOOP_URL=https://www.apache.org/dist/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
 ENV HADOOP_HOME=/opt/hadoop
 
@@ -112,7 +112,9 @@ RUN ln $HADOOP_CONF_DIR/workers $SPARK_CONF_DIR/ \
 
 RUN sudo pip install -U pip &&\
      sudo pip install --no-cache-dir \
-     openpyxl
+     openpyxl \
+     pyspark==3.4.1 \
+     findspark
 
 # Entry point
 COPY entrypoint.sh /usr/local/sbin/entrypoint.sh
