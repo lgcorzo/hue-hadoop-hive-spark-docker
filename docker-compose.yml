@@ -124,32 +124,6 @@ services:
       - "worker1:172.28.1.3"
       - "worker2:172.28.1.4"
 
-  jupyter:
-    image: hadoop-hive-spark-jupyter
-    hostname: jupyter
-    environment:
-      SPARK_MASTER_HOST: 172.28.1.2
-      SPARK_LOCAL_IP: 172.28.1.6
-      SPARK_LOCAL_HOSTNAME: jupyter
-    depends_on:
-      - master
-      - worker1
-      - worker2
-    ports:
-      - "8888:8888"
-    volumes:
-      - ./jupyter/notebook:/home/jupyter
-      - ../../Data:/landing
-    restart: always
-    networks:
-      sparknet:
-        ipv4_address: 172.28.1.6
-    extra_hosts:
-      - "metastore:172.28.1.1"
-      - "master:172.28.1.2"
-      - "worker1:172.28.1.3"
-      - "worker2:172.28.1.4"
-      - "history:172.28.1.5"
   dev:
       image: hadoop-hive-spark-dev
       stdin_open: true # docker run -i

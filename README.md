@@ -63,7 +63,7 @@ docker container run -it hadoop-hive-spark-dev  bash
 ```
 
 ```docker
-  jupyter:
+jupyter:
     image: hadoop-hive-spark-jupyter
     hostname: jupyter
     environment:
@@ -78,6 +78,7 @@ docker container run -it hadoop-hive-spark-dev  bash
       - "8888:8888"
     volumes:
       - ./jupyter/notebook:/home/jupyter
+      - ../../Data:/landing
     restart: always
     networks:
       sparknet:
@@ -90,23 +91,8 @@ docker container run -it hadoop-hive-spark-dev  bash
       - "history:172.28.1.5"
 ```
 
-```docker
-dev:
-    image: hadoop-hive-spark-dev
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
-    hostname: dev
-    environment:
-      SPARK_MASTER_HOST: 172.28.1.2
-      SPARK_LOCAL_IP: 172.28.1.7
-      SPARK_LOCAL_HOSTNAME: dev
-    volumes:
-      - ./dev/home:/home/developer
-    networks:
-      sparknet:
-        ipv4_address: 172.28.1.7
-    command: /bin/bash
-```
+	docker build -t hadoop-hive-spark-jupyter ./jupyter 
+
 
 ## references:
 
