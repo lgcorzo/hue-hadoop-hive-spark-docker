@@ -7,7 +7,7 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    environment: code_develop_env
+    environment: deployment_env
     steps:
       - name: Checkout
         uses: actions/checkout@v2

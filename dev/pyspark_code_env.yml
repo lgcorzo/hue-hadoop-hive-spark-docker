@@ -5,28 +5,22 @@ dependencies:
   - pyspark=3.4.1
   - delta-spark=2.4.*
   - pandas
+  - pyarrow 
   - findspark
-  - openjdk=11
   - numpy
-  - nb_conda_kernels
+  - openjdk=11.0.15
   - pip=20.2.4
   - pip:
-    - azureml-core==1.45.0.post2
-    - azureml-sdk==1.45.0
-    - azure-identity
-    - azure-keyvault-secrets
-    - azure-core==1.25.1
     - flake8
     - flake8-formatter-junit-xml==0.0.*
     - cloudpickle==1.2.2
     - pytest
     - pytest-cov
     - python-dotenv
-    - scikit-learn==0.24.0
-    - tqdm==4.62.*
+    - scikit-learn
+    - tqdm
     - fastparquet
     - autopep8
     - ipykernel
-    - pyarrow
 
 name: pyspark_code_env
