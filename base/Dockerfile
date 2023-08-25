@@ -112,11 +112,7 @@ RUN ln $HADOOP_CONF_DIR/workers $SPARK_CONF_DIR/ \
 
 RUN sudo pip install -U pip &&\
      sudo pip install --no-cache-dir \
-     openpyxl \
-     delta-spark \
-     fastparquet \
-     pandas \
-     pyarrow 
+     openpyxl
 
 # Entry point
 COPY entrypoint.sh /usr/local/sbin/entrypoint.sh

@@ -54,6 +54,6 @@ COPY ./entrypoint.sh ./entrypoint.sh
 RUN sudo chmod +x ./entrypoint.sh
 
 # See this tutorial for details https://pythonspeed.com/articles/activate-conda-dockerfile/
-RUN conda env create -f pyspark_code_env.yml
+# RUN conda env create -f pyspark_code_env.yml
 ENTRYPOINT ["./entrypoint.sh"]
 
