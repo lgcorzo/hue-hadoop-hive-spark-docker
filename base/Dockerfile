@@ -104,17 +104,13 @@ COPY --chown=$USERNAME:$GROUPNAME conf/spark-defaults.conf $SPARK_CONF_DIR/
 COPY --chown=$USERNAME:$GROUPNAME conf/log4j.properties $SPARK_CONF_DIR/
 COPY --chown=$USERNAME:$GROUPNAME conf/hive-site.xml $HIVE_CONF_DIR/
 
-COPY  --chown=$USERNAME:$GROUPNAME conf/delta-hive-assembly_2.12-0.6.0.jar /opt/hive/lib/delta-hive-assembly_2.12-0.6.0.jar
-RUN sudo chmod a+x /opt/hive/lib/delta-hive-assembly_2.12-0.6.0.jar
+# COPY  --chown=$USERNAME:$GROUPNAME conf/delta-hive-assembly_2.12-0.6.0.jar /opt/hive/lib/delta-hive-assembly_2.12-0.6.0.jar
+# RUN sudo chmod a+x /opt/hive/lib/delta-hive-assembly_2.12-0.6.0.jar
 
 RUN ln $HADOOP_CONF_DIR/workers $SPARK_CONF_DIR/ \
      && ln $HIVE_CONF_DIR/hive-site.xml $SPARK_CONF_DIR/
 
-RUN sudo pip install -U pip &&\
-     sudo pip install --no-cache-dir \
-     openpyxl \
-     pyspark==3.4.1 \
-     findspark
+RUN sudo pip install -U pip
 
 # Entry point
 COPY entrypoint.sh /usr/local/sbin/entrypoint.sh
