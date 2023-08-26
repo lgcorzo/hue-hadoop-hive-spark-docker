@@ -113,6 +113,6 @@ RUN ln $HADOOP_CONF_DIR/workers $SPARK_CONF_DIR/ \
 RUN sudo pip install -U pip
 
 # Entry point
-COPY ./entrypoint.sh /usr/local/sbin/entrypoint.sh
+COPY entrypoint.sh /usr/local/sbin/entrypoint.sh
 RUN sudo chmod a+x /usr/local/sbin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
