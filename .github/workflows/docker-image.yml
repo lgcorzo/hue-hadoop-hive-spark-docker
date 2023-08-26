@@ -25,3 +25,6 @@ jobs:
 
       - name: Build the jupyter image
         run: docker build ./jupyter --tag hadoop-hive-spark-jupyter --pull=false
+      
+      - name: Build the dev image
+        run: docker build ./dev --tag hadoop-hive-spark-dev --pull=false
