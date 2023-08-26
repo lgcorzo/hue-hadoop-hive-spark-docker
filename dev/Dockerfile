@@ -48,7 +48,7 @@ ENV HIVE_CONF_DIR=$HIVE_HOME/conf
 ENV PATH=$HIVE_HOME/sbin:$HIVE_HOME/bin:$PATH
 
 WORKDIR /home/$USERNAME
-COPY pyspark_code_env.yml ./
+COPY ./pyspark_code_env.yml ./
 # The code to run when container is started:
 COPY ./entrypoint.sh ./entrypoint.sh
 RUN sudo chmod +x ./entrypoint.sh
