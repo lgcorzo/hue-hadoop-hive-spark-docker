@@ -24,47 +24,39 @@ jobs:
       - name: Build and push BE
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: ./base/Dockerfile
+          context: ./base
+          file: Dockerfile
           push: true
           tags: lanteklcorzo001/hue-hadoop-hive-spark-docker-base:latest
 
       - name: Build and push FE
         uses: docker/build-push-action@v2
         with:
-            context: .
-            file: ./master/Dockerfile
+            context: ./master
+            file: Dockerfile
             push: true
             tags: lanteklcorzo001/hadoop-hive-spark-master:latest
 
       - name: Build and push FE
         uses: docker/build-push-action@v2
         with:
-              context: .
-              file: ./master/Dockerfile
-              push: true
-              tags: lanteklcorzo001/hadoop-hive-spark-master:latest
-
-      - name: Build and push FE
-        uses: docker/build-push-action@v2
-        with:
-              context: .
-              file: ./worker/Dockerfile
+              context: ./worker
+              file: Dockerfile
               push: true
               tags: lanteklcorzo001/hadoop-hive-spark-worker:latest
 
       - name: Build and push FE
         uses: docker/build-push-action@v2
         with:
-              context: .
-              file: ./history/Dockerfile
+              context: ./history
+              file: Dockerfile
               push: true
               tags: lanteklcorzo001/hadoop-hive-spark-history:latest
 
       - name: Build and push FE
         uses: docker/build-push-action@v2
         with:
-              context: .
-              file: ./dev/Dockerfile
+              context: ./dev
+              file: Dockerfile
               push: true
               tags: lanteklcorzo001/hadoop-hive-spark-dev:latest
