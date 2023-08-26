@@ -25,7 +25,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./base
-          file: Dockerfile
+          file: ./base/Dockerfile
           push: true
           tags: lanteklcorzo001/hue-hadoop-hive-spark-docker-base:latest
 
@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
             context: ./master
-            file: Dockerfile
+            file: ./master/Dockerfile
             push: true
             tags: lanteklcorzo001/hadoop-hive-spark-master:latest
 
@@ -41,7 +41,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
               context: ./worker
-              file: Dockerfile
+              file: ./worker/Dockerfile
               push: true
               tags: lanteklcorzo001/hadoop-hive-spark-worker:latest
 
@@ -49,7 +49,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
               context: ./history
-              file: Dockerfile
+              file: ./history/Dockerfile
               push: true
               tags: lanteklcorzo001/hadoop-hive-spark-history:latest
 
@@ -57,6 +57,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
               context: ./dev
-              file: Dockerfile
+              file: ./dev/Dockerfile
               push: true
               tags: lanteklcorzo001/hadoop-hive-spark-dev:latest
