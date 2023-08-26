@@ -1,4 +1,4 @@
-FROM hadoop-hive-spark-base
+FROM lanteklcorzo001/hadoop-hive-spark-base:latest
 
 ENV NAMEDIR=/opt/hadoop/dfs/name
 RUN mkdir -p /opt/hadoop/dfs/name

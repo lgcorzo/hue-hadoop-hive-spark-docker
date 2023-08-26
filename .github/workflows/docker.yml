@@ -21,7 +21,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Build and push BE
+      - name: Build and push base
         uses: docker/build-push-action@v2
         with:
           context: ./base
@@ -29,7 +29,7 @@ jobs:
           push: true
           tags: lanteklcorzo001/hue-hadoop-hive-spark-docker-base:latest
 
-      - name: Build and push FE
+      - name: Build and push master
         uses: docker/build-push-action@v2
         with:
             context: ./master
@@ -37,7 +37,7 @@ jobs:
             push: true
             tags: lanteklcorzo001/hadoop-hive-spark-master:latest
 
-      - name: Build and push FE
+      - name: Build and push worker
         uses: docker/build-push-action@v2
         with:
               context: ./worker
@@ -45,7 +45,7 @@ jobs:
               push: true
               tags: lanteklcorzo001/hadoop-hive-spark-worker:latest
 
-      - name: Build and push FE
+      - name: Build and push history
         uses: docker/build-push-action@v2
         with:
               context: ./history
@@ -53,10 +53,21 @@ jobs:
               push: true
               tags: lanteklcorzo001/hadoop-hive-spark-history:latest
 
-      - name: Build and push FE
+      - name: Build and push dev
         uses: docker/build-push-action@v2
         with:
               context: ./dev
               file: ./dev/Dockerfile
               push: true
               tags: lanteklcorzo001/hadoop-hive-spark-dev:latest
+
+      - name: Build and push jupyter
+        uses: docker/build-push-action@v2
+        with:
+            context: ./jupyter
+            file: ./jupyter/Dockerfile
+            push: true
+            tags: lanteklcorzo001/hadoop-hive-spark-jupyter:latest
+
+
+             

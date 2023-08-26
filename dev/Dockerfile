@@ -1,4 +1,4 @@
-FROM hadoop-hive-spark-base AS base
+FROM lanteklcorzo001/hadoop-hive-spark-base:latest AS base
 FROM continuumio/miniconda3:latest
 
 RUN apt-get -qq update  \

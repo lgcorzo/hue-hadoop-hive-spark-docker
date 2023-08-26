@@ -1,4 +1,5 @@
-FROM hadoop-hive-spark-base AS base
+FROM lanteklcorzo001/hadoop-hive-spark-base:latest AS base
+# FROM hadoop-hive-spark-base AS base
 FROM tensorflow/tensorflow:latest-jupyter
 
 RUN apt-get -qq update  \

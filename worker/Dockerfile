@@ -1,4 +1,4 @@
-FROM hadoop-hive-spark-base
+FROM lanteklcorzo001/hadoop-hive-spark-base:latest
 
 ENV DATADIR=/opt/hadoop/dfs/data
 RUN mkdir -p /opt/hadoop/dfs/data
