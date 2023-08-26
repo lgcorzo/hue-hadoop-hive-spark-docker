@@ -208,3 +208,6 @@ override.tf.json
 .databricks
 Data/
 typings/
+
+**/.local/*
+**/.ivy2/*

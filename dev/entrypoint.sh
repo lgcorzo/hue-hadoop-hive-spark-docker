@@ -6,7 +6,7 @@
 # init conda
 conda init
 # activate the environment
-conda activate pyspark_code_env
+# conda activate pyspark_code_env
 
 # exec the cmd/command in this process, making it pid 1
 exec "$@"

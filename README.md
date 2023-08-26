@@ -4,7 +4,7 @@
 
 * [Hadoop 3.3.4](https://hadoop.apache.org/)
 * [Hive 3.1.3](http://hive.apache.org/)
-* [Spark 3.3.2](https://spark.apache.org/)
+* [Spark 3.4.1](https://spark.apache.org/)
 
 ## Quick Start
 
@@ -63,7 +63,7 @@ docker container run -it hadoop-hive-spark-dev  bash
 ```
 
 ```docker
-  jupyter:
+jupyter:
     image: hadoop-hive-spark-jupyter
     hostname: jupyter
     environment:
@@ -78,6 +78,7 @@ docker container run -it hadoop-hive-spark-dev  bash
       - "8888:8888"
     volumes:
       - ./jupyter/notebook:/home/jupyter
+      - ../../Data:/landing
     restart: always
     networks:
       sparknet:
@@ -90,23 +91,8 @@ docker container run -it hadoop-hive-spark-dev  bash
       - "history:172.28.1.5"
 ```
 
-```docker
-dev:
-    image: hadoop-hive-spark-dev
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
-    hostname: dev
-    environment:
-      SPARK_MASTER_HOST: 172.28.1.2
-      SPARK_LOCAL_IP: 172.28.1.7
-      SPARK_LOCAL_HOSTNAME: dev
-    volumes:
-      - ./dev/home:/home/developer
-    networks:
-      sparknet:
-        ipv4_address: 172.28.1.7
-    command: /bin/bash
-```
+	docker build -t hadoop-hive-spark-jupyter ./jupyter 
+
 
 ## references:
 
@@ -115,3 +101,7 @@ https://marcel-jan.eu/datablog/2020/10/25/i-built-a-working-hadoop-spark-hive-cl
 hive and delta tables integration
 
 [connectors/hive at master · delta-io/connectors · GitHub](https://github.com/delta-io/connectors/tree/master/hive)
+
+
+
+

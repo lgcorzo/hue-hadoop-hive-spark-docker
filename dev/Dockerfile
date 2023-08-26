@@ -2,13 +2,13 @@ FROM hadoop-hive-spark-base AS base
 FROM continuumio/miniconda3:latest
 
 RUN apt-get -qq update  \
- && DEBIAN_FRONTEND=noninteractive apt-get -qq install --no-install-recommends \
-      sudo \
-      openjdk-11-jdk \
-      curl \
-      coreutils \
-      libc6-dev \
- && rm -rf /var/lib/apt/lists/*
+     && DEBIAN_FRONTEND=noninteractive apt-get -qq install --no-install-recommends \
+     sudo \
+     openjdk-11-jdk \
+     curl \
+     coreutils \
+     libc6-dev \
+     && rm -rf /var/lib/apt/lists/*
 
 ARG USERNAME=jupyter
 ARG GROUPNAME=jupyter
@@ -16,10 +16,10 @@ ARG UID=1001
 ARG GID=1001
 
 RUN echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME \
- && chmod 0440 /etc/sudoers.d/$USERNAME \
- && groupadd -g $GID $GROUPNAME \
- && useradd -m -s /bin/bash -u $UID -g $GID $USERNAME \
- && usermod -aG root $USERNAME
+     && chmod 0440 /etc/sudoers.d/$USERNAME \
+     && groupadd -g $GID $GROUPNAME \
+     && useradd -m -s /bin/bash -u $UID -g $GID $USERNAME \
+     && usermod -aG root $USERNAME
 
 USER $USERNAME
 
@@ -54,6 +54,6 @@ COPY ./entrypoint.sh ./entrypoint.sh
 RUN sudo chmod +x ./entrypoint.sh
 
 # See this tutorial for details https://pythonspeed.com/articles/activate-conda-dockerfile/
-RUN conda env create -f pyspark_code_env.yml
+# RUN conda env create -f pyspark_code_env.yml
 ENTRYPOINT ["./entrypoint.sh"]
 
