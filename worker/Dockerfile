@@ -1,4 +1,4 @@
-FROM hue-hadoop-hive-spark-docker-base:latest
+FROM lanteklcorzo001/hue-hadoop-hive-spark-docker-base:latest
 
 ENV DATADIR=/opt/hadoop/dfs/data
 RUN mkdir -p /opt/hadoop/dfs/data

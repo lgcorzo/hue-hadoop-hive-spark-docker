@@ -1,4 +1,4 @@
-FROM hue-hadoop-hive-spark-docker-base:latest AS base
+FROM lanteklcorzo001/hue-hadoop-hive-spark-docker-base:latest AS base
 FROM continuumio/miniconda3:latest
 
 RUN apt-get -qq update  \

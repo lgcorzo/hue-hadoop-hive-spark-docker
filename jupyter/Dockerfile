@@ -1,4 +1,4 @@
-FROM hue-hadoop-hive-spark-docker-base:latest AS base
+FROM lanteklcorzo001/hue-hadoop-hive-spark-docker-base:latest AS base
 # FROM hadoop-hive-spark-base AS base
 FROM tensorflow/tensorflow:latest-jupyter
 
@@ -58,7 +58,7 @@ RUN sudo pip install -U pip &&\
     pandas \
     pyarrow \
     tensorflow-serving-api
-    
+
 RUN  curl -fsSL https://code-server.dev/install.sh | sh
 
 WORKDIR /home/$USERNAME
