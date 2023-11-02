@@ -1,4 +1,4 @@
-FROM hue-hadoop-hive-spark-docker-base:latest
+FROM lanteklcorzo001/hue-hadoop-hive-spark-docker-base:latest
 
 ENV NAMEDIR=/opt/hadoop/dfs/name
 RUN mkdir -p /opt/hadoop/dfs/name
