@@ -1,4 +1,4 @@
-FROM lanteklcorzo001/hue-hadoop-hive-spark-docker-base:latest AS base
+FROM hue-hadoop-hive-spark-docker-base:latest AS base
 FROM continuumio/miniconda3:latest
 
 RUN apt-get -qq update  \
@@ -9,6 +9,7 @@ RUN apt-get -qq update  \
      coreutils \
      libc6-dev \
      && rm -rf /var/lib/apt/lists/*
+
 
 ARG USERNAME=jupyter
 ARG GROUPNAME=jupyter

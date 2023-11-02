@@ -1,15 +1,15 @@
-FROM lanteklcorzo001/hue-hadoop-hive-spark-docker-base:latest AS base
+FROM hue-hadoop-hive-spark-docker-base:latest AS base
 # FROM hadoop-hive-spark-base AS base
 FROM tensorflow/tensorflow:latest-jupyter
 
 RUN apt-get -qq update  \
- && DEBIAN_FRONTEND=noninteractive apt-get -qq install --no-install-recommends \
-      sudo \
-      openjdk-8-jdk \
-      curl \
-      coreutils \
-      libc6-dev \
- && rm -rf /var/lib/apt/lists/*
+    && DEBIAN_FRONTEND=noninteractive apt-get -qq install --no-install-recommends \
+    sudo \
+    openjdk-8-jdk \
+    curl \
+    coreutils \
+    libc6-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 ARG USERNAME=jupyter
 ARG GROUPNAME=jupyter
@@ -18,10 +18,10 @@ ARG GID=1001
 
 
 RUN echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME \
- && chmod 0440 /etc/sudoers.d/$USERNAME \
- && groupadd -g $GID $GROUPNAME \
- && useradd -m -s /bin/bash -u $UID -g $GID $USERNAME \
- && usermod -aG root $USERNAME
+    && chmod 0440 /etc/sudoers.d/$USERNAME \
+    && groupadd -g $GID $GROUPNAME \
+    && useradd -m -s /bin/bash -u $UID -g $GID $USERNAME \
+    && usermod -aG root $USERNAME
 
 USER $USERNAME
 
@@ -58,6 +58,8 @@ RUN sudo pip install -U pip &&\
     pandas \
     pyarrow \
     tensorflow-serving-api
+    
+RUN  curl -fsSL https://code-server.dev/install.sh | sh
 
 WORKDIR /home/$USERNAME
 
