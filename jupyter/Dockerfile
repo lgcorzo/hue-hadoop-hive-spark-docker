@@ -63,8 +63,6 @@ RUN  curl -fsSL https://code-server.dev/install.sh | sh
 
 WORKDIR /home/$USERNAME
 
-RUN sudo systemctl enable --now code-server@$USERNAME
-
 COPY run.sh /usr/local/sbin/run.sh
 RUN sudo chmod a+x /usr/local/sbin/run.sh
 CMD ["run.sh"]
