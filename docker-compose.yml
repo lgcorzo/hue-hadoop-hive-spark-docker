@@ -20,7 +20,7 @@ services:
       - "history:172.28.1.5"
 
   master:
-    image: hadoop-hive-spark-master
+    image: lanteklcorzo001/hadoop-hive-spark-master
     hostname: master
     depends_on:
       - metastore
@@ -49,7 +49,7 @@ services:
       - "history:172.28.1.5"
 
   worker1:
-    image: hadoop-hive-spark-worker
+    image: lanteklcorzo001/hadoop-hive-spark-worker
     hostname: worker1
     depends_on:
       - master
@@ -75,7 +75,7 @@ services:
       - "history:172.28.1.5"
 
   worker2:
-    image: hadoop-hive-spark-worker
+    image: lanteklcorzo001/hadoop-hive-spark-worker
     hostname: worker2
     depends_on:
       - master
@@ -101,7 +101,7 @@ services:
       - "history:172.28.1.5"
 
   history:
-    image: hadoop-hive-spark-history
+    image: lanteklcorzo001/hadoop-hive-spark-history
     hostname: history
     depends_on:
       - master
@@ -125,7 +125,7 @@ services:
       - "worker2:172.28.1.4"
 
   dev:
-      image: hadoop-hive-spark-dev
+      image: lanteklcorzo001/hadoop-hive-spark-dev
       stdin_open: true # docker run -i
       tty: true        # docker run -t
       hostname: dev
@@ -144,7 +144,7 @@ services:
       command: /bin/bash
 
   jupyter:
-    image: hadoop-hive-spark-jupyter
+    image: lanteklcorzo001/hadoop-hive-spark-jupyter
     hostname: jupyter
     environment:
       SPARK_MASTER_HOST: 172.28.1.2
