@@ -156,6 +156,7 @@ services:
       - worker2
     ports:
       - "8888:8888"
+      - "28080:8080"
     volumes:
       - ./jupyter/notebook:/home/jupyter
       - ../../Data:/landing
