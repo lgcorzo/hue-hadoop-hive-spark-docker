@@ -1,19 +1,18 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
-RUN apt install software-properties-common -y \
-    && add-apt-repository ppa:deadsnakes/ppa \
-    && apt-get -qq update \
-    && DEBIAN_FRONTEND=noninteractive apt-get -qq install --no-install-recommends \
-    sudo \
-    openjdk-8-jdk \
-    curl \
-    gnupg \
-    procps \
-    python3.10 \
-    python3.10-pip \
-    coreutils \
-    libc6-dev \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get -qq update  \
+     && DEBIAN_FRONTEND=noninteractive apt-get -qq install --no-install-recommends \
+     sudo \
+     openjdk-8-jdk \
+     curl \
+     gnupg \
+     procps \
+     python3 \
+     python3-pip \
+     python-is-python3 \
+     coreutils \
+     libc6-dev \
+     && rm -rf /var/lib/apt/lists/*
 
 ARG USERNAME=jupyter
 ARG GROUPNAME=jupyter
