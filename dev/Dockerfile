@@ -10,6 +10,9 @@ RUN apt-get -qq update  \
      libc6-dev \
      && rm -rf /var/lib/apt/lists/*
 
+# vscode-server
+RUN  curl -fsSL https://code-server.dev/install.sh | sh
+
 
 ARG USERNAME=jupyter
 ARG GROUPNAME=jupyter
@@ -47,9 +50,6 @@ COPY --from=base --chown=$USERNAME:$GROUPNAME /opt/hive /opt/hive
 ENV HIVE_HOME=/opt/hive
 ENV HIVE_CONF_DIR=$HIVE_HOME/conf
 ENV PATH=$HIVE_HOME/sbin:$HIVE_HOME/bin:$PATH
-
-# vscode-server
-RUN  curl -fsSL https://code-server.dev/install.sh | sh
 
 WORKDIR /home/$USERNAME
 COPY ./pyspark_code_env.yml ./
