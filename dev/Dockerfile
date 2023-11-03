@@ -48,6 +48,9 @@ ENV HIVE_HOME=/opt/hive
 ENV HIVE_CONF_DIR=$HIVE_HOME/conf
 ENV PATH=$HIVE_HOME/sbin:$HIVE_HOME/bin:$PATH
 
+# vscode-server
+RUN  curl -fsSL https://code-server.dev/install.sh | sh
+
 WORKDIR /home/$USERNAME
 COPY ./pyspark_code_env.yml ./
 # The code to run when container is started:

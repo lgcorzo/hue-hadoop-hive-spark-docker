@@ -59,7 +59,6 @@ RUN sudo pip install -U pip &&\
     pyarrow \
     tensorflow-serving-api
 
-RUN  curl -fsSL https://code-server.dev/install.sh | sh
 
 WORKDIR /home/$USERNAME
 

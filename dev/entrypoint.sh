@@ -8,6 +8,8 @@ conda init
 # activate the environment
 # conda activate pyspark_code_env
 
+echo "Starting Code server ..."
+code-server
 # exec the cmd/command in this process, making it pid 1
-exec "$@"
+# exec "$@"
 
