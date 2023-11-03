@@ -126,14 +126,16 @@ services:
 
   dev:
       image: lanteklcorzo001/hadoop-hive-spark-dev
-      stdin_open: true # docker run -i
-      tty: true        # docker run -t
+      # stdin_open: true 
+      # tty: true        
       hostname: dev
       restart: always
       environment:
         SPARK_MASTER_HOST: 172.28.1.2
         SPARK_LOCAL_IP: 172.28.1.7
         SPARK_LOCAL_HOSTNAME: dev
+      ports:
+        - "28080:8080"
       volumes:
         - ./dev/home:/home/developer
         - ../../Data:/landing
@@ -141,7 +143,7 @@ services:
       networks:
         sparknet:
           ipv4_address: 172.28.1.7
-      command: /bin/bash
+      # command: /bin/bash
 
   jupyter:
     image: lanteklcorzo001/hadoop-hive-spark-jupyter
@@ -156,7 +158,6 @@ services:
       - worker2
     ports:
       - "8888:8888"
-      - "28080:8080"
     volumes:
       - ./jupyter/notebook:/home/jupyter
       - ../../Data:/landing

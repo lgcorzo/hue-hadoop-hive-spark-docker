@@ -56,6 +56,9 @@ http://localhost:8989
 
 URL: http://localhost:8888
 
+### Remote VSCODE
+http://localhost:28080/
+
 example: [jupyter/notebook/pyspark.ipynb](jupyter/notebook/pyspark.ipynb)
 
 ```
