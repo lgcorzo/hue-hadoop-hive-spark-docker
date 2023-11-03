@@ -1,8 +1,6 @@
 FROM ubuntu:20.04
 
-RUN apt install software-properties-common -y \
-     && add-apt-repository ppa:deadsnakes/ppa \
-     && apt-get -qq update \
+RUN apt-get -qq update  \
      && DEBIAN_FRONTEND=noninteractive apt-get -qq install --no-install-recommends \
      sudo \
      openjdk-8-jdk \
@@ -14,7 +12,6 @@ RUN apt install software-properties-common -y \
      coreutils \
      libc6-dev \
      && rm -rf /var/lib/apt/lists/*
-
 
 ARG USERNAME=jupyter
 ARG GROUPNAME=jupyter
