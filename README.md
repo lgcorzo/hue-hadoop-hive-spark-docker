@@ -222,3 +222,8 @@ The infrastructure described is a good starting point for developing an open sou
 
 **By following these steps, you can develop an open source MLOps-DATA system that is powerful, scalable, and secure.**
 
+/home/jupyter/.profile
+
+export PATH=$HADOOP_HOME/sbin:$HADOOP_HOME/bin:$PATH
+export PATH=$HIVE_HOME/sbin:$HIVE_HOME/bin:$PATH
+export PATH=$SPARK_HOME/sbin:$SPARK_HOME/bin:$PATH
