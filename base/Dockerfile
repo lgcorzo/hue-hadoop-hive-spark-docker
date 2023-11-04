@@ -108,6 +108,9 @@ COPY --chown=$USERNAME:$GROUPNAME conf/hive-site.xml $HIVE_CONF_DIR/
 COPY  --chown=$USERNAME:$GROUPNAME conf/delta-hive_2.12-3.0.0.jar /opt/hive/lib/delta-hive_2.12-3.0.0.jar
 RUN sudo chmod a+x /opt/hive/lib/delta-hive_2.12-3.0.0.jar
 
+COPY  --chown=$USERNAME:$GROUPNAME conf/tez-api-0.10.2.jar /opt/hive/lib/tez-api-0.10.2.jar
+RUN sudo chmod a+x /opt/hive/lib/tez-api-0.10.2.jar
+
 RUN ln $HADOOP_CONF_DIR/workers $SPARK_CONF_DIR/ \
      && ln $HIVE_CONF_DIR/hive-site.xml $SPARK_CONF_DIR/
 

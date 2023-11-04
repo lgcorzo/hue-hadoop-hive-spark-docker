@@ -227,3 +227,27 @@ The infrastructure described is a good starting point for developing an open sou
 export PATH=$HADOOP_HOME/sbin:$HADOOP_HOME/bin:$PATH
 export PATH=$HIVE_HOME/sbin:$HIVE_HOME/bin:$PATH
 export PATH=$SPARK_HOME/sbin:$SPARK_HOME/bin:$PATH
+
+
+instal delta in hive:
+https://github.com/delta-io/delta/blob/master/connectors/hive/README.md
+
+
+hive -e "ADD JAR /landing/delta-hive-assembly_2.12-0.6.0.jar;"
+hive -e "ADD JAR /landing/tez-api-0.10.2.jar;"
+
+hive -e "LIST JARS;"
+hive -e "SET hive.execution.engine=tez;"
+
+rm -rf /opt/hive/lib/log4j-slf4j-impl-2.17.1.jar
+cp -v /landing/tez-api-0.10.2.jar /opt/hive/lib/
+
+
+
+hive 
+ALTER TABLE rz_comm_results.rz_uncompress_task
+SET TBLPROPERTIES (
+  'input.format' = 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat',
+  'output.format' = 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat',
+  'serde' = 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+);
