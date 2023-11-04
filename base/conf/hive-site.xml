@@ -50,21 +50,7 @@
     </property>
     <property>
         <name>hive.aux.jars.path</name>
-        <value>/opt/hive/lib/delta-hive_2.12-3.0.0.jar</value>
+        <value>/opt/hive/lib_aux</value>
     </property>
-
-    <property>
-        <name>hive.exec.dynamic.partition.mode</name>
-        <value>nonstrict</value>
-    </property>
-    <property>
-        <name>hive.exec.dynamic.partition</name>
-        <value>true</value>
-    </property>
-    <property>
-        <name>spark.sql.extensions</name>
-        <value>org.apache.spark.sql.delta.catalog.DeltaCatalog</value>
-    </property>
-
 
 </configuration>
