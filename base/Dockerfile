@@ -112,7 +112,7 @@ RUN set -x \
      && gpg --verify /tmp/livy.zip.asc \
      && sudo mkdir /tmp/livy \
      && sudo unzip /tmp/livy.zip -d /tmp/livy \
-     && sudo mv -r /tmp/livy/apache-livy-$LIVY_VERSION-incubating_2.12-bin $LIVY_HOME \
+     && sudo mv -R /tmp/livy/apache-livy-$LIVY_VERSION-incubating_2.12-bin $LIVY_HOME \
      && rm /tmp/livy*
 
 ENV LIVY_CONF_DIR=$LIVY_HOME/conf
