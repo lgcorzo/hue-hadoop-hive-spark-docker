@@ -12,6 +12,7 @@ RUN apt-get -qq update  \
      python-is-python3 \
      coreutils \
      libc6-dev \
+     unzip \
      && rm -rf /var/lib/apt/lists/*
 
 ARG USERNAME=jupyter
