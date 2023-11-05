@@ -113,7 +113,7 @@ RUN set -x \
      && sudo mkdir /tmp/livy \
      && sudo unzip /tmp/livy.zip -d /tmp/livy \
      && sudo mv /tmp/livy/apache-livy-$LIVY_VERSION-incubating_2.12-bin/* $LIVY_HOME \
-     && rm /tmp/livy*
+     && rm -rf /tmp/livy*
 
 ENV LIVY_CONF_DIR=$LIVY_HOME/conf
 ENV PATH=$LIVY_HOME/bin:$PATH
