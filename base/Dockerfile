@@ -95,6 +95,27 @@ RUN set -x \
 ENV HIVE_CONF_DIR=$HIVE_HOME/conf
 ENV PATH=$HIVE_HOME/sbin:$HIVE_HOME/bin:$PATH
 
+
+# Livy
+ARG LIVY_VERSION=0.8.0
+ARG LIVY_URL=https://archive.apache.org/dist/incubator/livy/$LIVY_VERSION-incubating/apache-livy-$LIVY_VERSION-incubating_2.12-bin.zip
+ENV LIVY_HOME=/opt/livy
+
+RUN set -x \
+     && curl -fsSL https://archive.apache.org/dist/incubator/livy/KEYS -o /tmp/livy-KEYS \
+     && gpg --import /tmp/livy-KEYS \
+     && sudo mkdir $LIVY_HOME \
+     && sudo chown $USERNAME:$GROUPNAME -R $LIVY_HOME \
+     && curl -fsSL $LIVY_URL -o /tmp/livy.zip \
+     && curl -fsSL $LIVY_URL.asc -o /tmp/livy.zip.asc \
+     && gpg --verify /tmp/livy.zip.asc \
+     && unzip /tmp/livy.zip -d $LIVY_HOME \
+     && rm /tmp/livy*
+
+ENV LIVY_CONF_DIR=$LIVY_HOME/conf
+ENV PATH=$LIVY_HOME/bin:$PATH
+
+
 # Config
 COPY --chown=$USERNAME:$GROUPNAME conf/core-site.xml $HADOOP_CONF_DIR/
 COPY --chown=$USERNAME:$GROUPNAME conf/hdfs-site.xml $HADOOP_CONF_DIR/
@@ -104,7 +125,7 @@ COPY --chown=$USERNAME:$GROUPNAME conf/workers $HADOOP_CONF_DIR/
 COPY --chown=$USERNAME:$GROUPNAME conf/spark-defaults.conf $SPARK_CONF_DIR/
 COPY --chown=$USERNAME:$GROUPNAME conf/log4j.properties $SPARK_CONF_DIR/
 COPY --chown=$USERNAME:$GROUPNAME conf/hive-site.xml $HIVE_CONF_DIR/
-
+COPY --chown=$USERNAME:$GROUPNAME conf/livy.conf $LIVY_CONF_DIR/
 COPY  --chown=$USERNAME:$GROUPNAME conf/delta-hive_2.12-3.0.0.jar /opt/hive/lib_aux/delta-hive_2.12-3.0.0.jar
 RUN sudo chmod a+x /opt/hive/lib_aux/delta-hive_2.12-3.0.0.jar
 

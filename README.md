@@ -239,3 +239,23 @@ hive -e "SET hive.execution.engine=tez;"
 
 rm -rf /opt/hive/lib/log4j-slf4j-impl-2.17.1.jar
 cp -v /landing/tez-api-0.10.2.jar /opt/hive/lib/
+
+
+install Livy in master
+
+``` bash 
+
+#!/bin/bash
+
+# Download the Livy package from the Apache website
+wget https://www.apache.org/dyn/closer.lua/incubator/livy/0.8.0-incubating/apache-livy-0.8.0-incubating_2.11-bin.zip
+
+# Unzip the Livy package
+unzip apache-livy-0.8.0-incubating_2.11-bin.zip
+
+# Move the Livy package to a suitable location
+sudo cp -r  /landing/apache-livy-0.8.0-incubating_2.12-bin /opt/livy
+cd /opt/livy/bin
+sudo ./livy-server start
+
+```
