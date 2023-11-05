@@ -110,7 +110,8 @@ RUN set -x \
      && curl -fsSL $LIVY_URL -o /tmp/livy.zip \
      && curl -fsSL $LIVY_URL.asc -o /tmp/livy.zip.asc \
      && gpg --verify /tmp/livy.zip.asc \
-     && unzip /tmp/livy.zip -d $LIVY_HOME \
+     && unzip /tmp/livy.zip -d /tmp/livy \
+     && mv -r /tmp/livy/apache-livy-$LIVY_VERSION-incubating_2.12-bin $LIVY_HOME \
      && rm /tmp/livy*
 
 ENV LIVY_CONF_DIR=$LIVY_HOME/conf
