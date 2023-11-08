@@ -211,3 +211,5 @@ typings/
 
 **/.local/*
 **/.ivy2/*
+kubeflow/
+jupyter/notebook

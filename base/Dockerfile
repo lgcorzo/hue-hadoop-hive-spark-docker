@@ -52,9 +52,10 @@ ENV PATH=$HADOOP_HOME/sbin:$HADOOP_HOME/bin:$PATH
 ENV LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
 
 # Spark
-ARG SPARK_VERSION=3.4.1
+ENV SPARK_VERSION=3.4.1
 ARG SPARK_URL=https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop3.tgz
 ENV SPARK_HOME=/opt/spark
+
 
 RUN set -x \
      && curl -fsSL https://archive.apache.org/dist/spark/KEYS -o /tmp/spark-KEYS  \
@@ -130,7 +131,9 @@ COPY --chown=$USERNAME:$GROUPNAME conf/log4j.properties $SPARK_CONF_DIR/
 COPY --chown=$USERNAME:$GROUPNAME conf/hive-site.xml $HIVE_CONF_DIR/
 COPY --chown=$USERNAME:$GROUPNAME conf/livy.conf $LIVY_CONF_DIR/
 COPY  --chown=$USERNAME:$GROUPNAME conf/delta-hive_2.12-3.0.0.jar /opt/hive/lib_aux/delta-hive_2.12-3.0.0.jar
+COPY  --chown=$USERNAME:$GROUPNAME conf/delta-hive-assembly_2.12-0.6.0.jar /opt/hive/lib_aux/delta-hive-assembly_2.12-0.6.0.jar
 RUN sudo chmod a+x /opt/hive/lib_aux/delta-hive_2.12-3.0.0.jar
+RUN sudo chmod a+x /opt/hive/lib_aux/delta-hive-assembly_2.12-0.6.0.jar
 
 
 RUN ln $HADOOP_CONF_DIR/workers $SPARK_CONF_DIR/ \

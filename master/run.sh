@@ -44,15 +44,24 @@ then
   hdfs dfs -put "$SPARK_HOME"/jars/* "$SPARK_JARS_HDFS_PATH"/
 fi
 
+echo "Starting thrift server..."
+start-thriftserver.sh &
+
 echo "Starting livy server..."
 livy-server start &
+
+echo "Starting spark sql server..."
+export SPARK_SQL_EXTENSIONS="io.delta.sql.DeltaSparkSessionExtension"
+export SPARK_SQL_CATALOG_SPARK_CATALOG="org.apache.spark.sql.delta.catalog.DeltaCatalog"
+start-connect-server.sh --packages org.apache.spark:spark-connect_2.12:$SPARK_VERSION \
+ --packages io.delta:delta-core_2.12:2.4.0 &
 
 echo "Starting Spark master node..."
 spark-class org.apache.spark.deploy.master.Master --ip "$SPARK_MASTER_HOST"
 
 spark-shell --packages io.delta:delta-core_2.12:2.4.0 \
   --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" \
-  --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
+  --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog" &
 
 
 
