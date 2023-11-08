@@ -44,6 +44,12 @@ worker2: http://localhost:8082
 
 history: http://localhost:18080
 
+Thrift SQL UI http://localhost:4040/environment/ 
+
+## livy server
+
+livy: http://localhost:8998
+
 ### Hive
 
 URI: jdbc:hive2://localhost:10000
