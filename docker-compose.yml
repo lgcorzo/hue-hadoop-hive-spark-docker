@@ -141,6 +141,7 @@ services:
         - ./dev/home:/home/developer
         - ../../Data:/landing
         - ../../repos:/home/repos
+        - ./base/conf/config.yaml:/home/jupyter/.config/code-server/config.yaml
       networks:
         sparknet:
           ipv4_address: 172.28.1.7
