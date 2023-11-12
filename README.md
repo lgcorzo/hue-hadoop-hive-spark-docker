@@ -136,7 +136,7 @@ Elements of the infra to develop to have an opensource MLOPS-DATA system
   * Kafka
 * Storage
   * hadoop (HDFS)
-    * hive metastore (tables)
+    * hive metastore (tables) (iceberg /delta lake (databricks))
     * Mongo DB (documents)
     * pachyderm (media files)
 * Indexing and search
