@@ -205,15 +205,13 @@ services:
   hue:
     image: gethue/hue:latest
     container_name: hue
-    environment:
-        SPARK_MASTER_HOST: 172.28.1.2
-        SPARK_LOCAL_IP: 172.28.1.9
-        SPARK_LOCAL_HOSTNAME: hue
+    user: "hue"  # Set the user to root
+    privileged: true  # Give the container full access to the host
     ports:
     - "8989:8888"
     volumes:
       - ./Hue/hue_overrides.ini:/usr/share/hue/desktop/conf/z-hue.ini
-    restart: always
+    restart: always  
     depends_on:
       - huedb
     networks:

@@ -45,23 +45,29 @@ then
 fi
 
 echo "Starting thrift server..."
-start-thriftserver.sh &
+start-thriftserver.sh \
+  --conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension \
+  --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog \
+  --packages "org.apache.spark:spark-connect_2.12:$SPARK_VERSION" \
+  --packages "io.delta:delta-core_2.12:2.4.0" &
 
-echo "Starting livy server..."
-livy-server start &
+# echo "Starting livy server..."
+# livy-server start &
 
-echo "Starting spark sql server..."
-export SPARK_SQL_EXTENSIONS="io.delta.sql.DeltaSparkSessionExtension"
-export SPARK_SQL_CATALOG_SPARK_CATALOG="org.apache.spark.sql.delta.catalog.DeltaCatalog"
-start-connect-server.sh --packages org.apache.spark:spark-connect_2.12:$SPARK_VERSION \
- --packages io.delta:delta-core_2.12:2.4.0 &
+# echo "Starting spark sql server..."
+
+#spark-submit --packages "org.apache.spark:spark-connect_2.12:$SPARK_VERSION" \
+#  --packages "io.delta:delta-core_2.12:2.4.0" \
+ # --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" \
+ # --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog" \
+ # --class org.apache.spark.sql.hive.thriftserver.HiveThriftServer2 &
 
 echo "Starting Spark master node..."
 spark-class org.apache.spark.deploy.master.Master --ip "$SPARK_MASTER_HOST"
 
-spark-shell --packages io.delta:delta-core_2.12:2.4.0 \
+spark-shell --packages 'io.delta:delta-core_2.12:2.4.0' \
   --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" \
-  --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog" &
+  --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
 
 
 
